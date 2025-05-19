@@ -15,10 +15,10 @@
 
     .booking-box {
       background: #ffffff;
-      padding: 30px;
+      padding: 40px 50px;
       border-radius: 12px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      max-width: 500px;
+      max-width: 700px;
       width: 100%;
     }
 
@@ -48,6 +48,12 @@
       height: 100px;
     }
 
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
     button {
       background: #0a74da;
       color: white;
@@ -56,7 +62,6 @@
       width: 100%;
       border: none;
       border-radius: 6px;
-      margin-top: 20px;
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s;
@@ -64,6 +69,15 @@
 
     button:hover {
       background: #075bb5;
+    }
+
+    .cancel-btn {
+      background: #ccc;
+      color: #333;
+    }
+
+    .cancel-btn:hover {
+      background: #999;
     }
   </style>
 </head>
@@ -73,16 +87,16 @@
     <h2>Package A: Land Tour 2D 1N</h2>
     <form id="bookingFormA">
       <label for="email">Email</label>
-      <input type="text" id="email" name="email" required />
+      <input type="email" id="email" name="email" required />
 
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required />
 
       <label for="contact">Contact #</label>
-      <input type="text" id="contact" name="contact" required />
+      <input type="tel" id="contact" name="contact" required />
 
       <label for="pax"># of Pax</label>
-      <input type="text" id="pax" name="pax" required />
+      <input type="number" id="pax" name="pax" required min="1" />
 
       <label for="date">Date</label>
       <input type="date" id="date" name="date" required />
@@ -90,7 +104,10 @@
       <label for="remarks">Remarks / Preferences</label>
       <textarea id="remarks" name="remarks"></textarea>
 
-      <button type="submit">Book Now</button>
+      <div class="button-group">
+        <button type="submit">Book Now</button>
+        <button type="button" class="cancel-btn" onclick="window.location.href='https://apayaotravelandtours.my.canva.site/'">Cancel</button>
+      </div>
     </form>
   </div>
 
@@ -108,7 +125,6 @@
       const message = `Package A Booking\nName: ${name}\nEmail: ${email}\nContact: ${contact}\nNo. of Pax: ${pax}\nDate: ${date}\nRemarks: ${remarks}`;
       const encoded = encodeURIComponent(message);
 
-      // Replace with your actual Messenger username
       const messengerUsername = "apayaotravels";
       const messengerURL = `https://m.me/${messengerUsername}?text=${encoded}`;
 
