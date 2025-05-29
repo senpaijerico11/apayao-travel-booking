@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Package B Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f7fc;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .booking-box {
+      background: #ffffff;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0a74da;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      font-weight: bold;
+      padding: 12px 20px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cancel-btn {
+      background: #ccc;
+      color: #333;
+    }
+
+    .cancel-btn:hover {
+      background: #999;
+    }
+
+    .book-btn {
+      background: #0a74da;
+      color: white;
+    }
+
+    .book-btn:hover {
+      background: #075bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="booking-box">
+    <h2>Package B: River Cruise</h2>
+    <form id="bookingFormB">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="contact">Contact #</label>
+      <input type="tel" id="contact" name="contact" required />
+
+      <label for="pax"># of Pax</label>
+      <input type="number" id="pax" name="pax" required min="1" />
+
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="remarks">Remarks / Preferences</label>
+      <textarea id="remarks" name="remarks"></textarea>
+
+      <div class="button-group">
+        <!-- Cancel on the left -->
+        <button type="button" class="cancel-btn" onclick="window.location.href='https://apayaotravelandtours.my.canva.site/'">Cancel</button>
+        <button type="submit" class="book-btn">Book Now</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('bookingFormB').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
+      const contact = document.getElementById('contact').value;
+      const pax = document.getElementById('pax').value;
+      const date = document.getElementById('date').value;
+      const remarks = document.getElementById('remarks').value;
+
+      const message = `Package B Booking: River Cruise\nName: ${name}\nEmail: ${email}\nContact: ${contact}\nNo. of Pax: ${pax}\nDate: ${date}\nRemarks: ${remarks}`;
+      const encoded = encodeURIComponent(message);
+
+      const messengerUsername = "apayaotravels";
+      const messengerURL = `https://m.me/${messengerUsername}?text=${encoded}`;
+
+      window.location.href = messengerURL;
+    });
+  </script>
+
+</body>
+</html>
